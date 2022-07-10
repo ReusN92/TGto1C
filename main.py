@@ -2,7 +2,7 @@ import telebot, requests
 from loguru import logger
 # from flask import Flask, request
 from config import TOKEN, URL_PING
-from func import ping_pong
+from func import ping_pong,approve
 
 
 logger.add("debug.log", level="DEBUG", format="{time} {level} {message}")
@@ -19,7 +19,17 @@ def send_welcome(message):
 @logger.catch
 def send_ping(message):
     try:
-        response = ping_pong(message).json()
+        response = ping_pong().json()
+    except:
+        bot.send_message(message.chat.id, "Сервер не доступен")
+    bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
+
+
+@bot.message_handler(commands=['approve'])
+@logger.catch
+def send_approve(message):
+    try:
+        response = approve().json()
     except:
         bot.send_message(message.chat.id, "Сервер не доступен")
     bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
