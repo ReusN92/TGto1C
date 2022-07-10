@@ -19,7 +19,7 @@ def send_welcome(message):
 @logger.catch
 def send_ping(message):
     try:
-        response = ping_pong().json()
+        response = ping_pong()
     except:
         bot.send_message(message.chat.id, "Сервер не доступен")
     bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
@@ -29,7 +29,7 @@ def send_ping(message):
 @logger.catch
 def send_approve(message):
     try:
-        response = approve().json()
+        response = approve()
     except:
         bot.send_message(message.chat.id, "Сервер не доступен")
     bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
