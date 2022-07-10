@@ -18,20 +18,14 @@ def send_welcome(message):
 @bot.message_handler(commands=['ping'])
 @logger.catch
 def send_ping(message):
-    try:
-        response = req(URL_PING)
-    except:
-        bot.send_message(message.chat.id, "Сервер не доступен")
+    response = req(URL_PING)
     bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
 
 
 @bot.message_handler(commands=['approve'])
 @logger.catch
 def send_approve(message):
-    try:
-        response = req(URL_APPROVE)
-    except:
-        bot.send_message(message.chat.id, "Сервер не доступен")
+    response = req(URL_APPROVE)
     bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
 
 

@@ -13,19 +13,12 @@ headers = {
         'Upgrade-Insecure-Requests': '1',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
-
+@logger.catch
 def req(URL):
-    response = requests.get(URL_PING, headers=headers, verify=False)
+    response = requests.get(URL, headers=headers, verify=False)
     if response.status_code == 200:
         return response.json()
     else:
         data = {"result": f"Status Code [{response.status_code}]"}
         return data
 
-def approve():
-    response = requests.get(URL_APPROVE, headers=headers, verify=False)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        data = {"result": f"Status Code [{response.status_code}]"}
-        return data
