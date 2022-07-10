@@ -14,7 +14,6 @@ bot = telebot.TeleBot(TOKEN)
 @logger.catch
 def send_welcome(message):
     bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}')
-    logger.critical('msg sended')
 
 @bot.message_handler(commands=['ping'])
 @logger.catch
@@ -24,8 +23,6 @@ def send_ping(message):
     except:
         bot.send_message(message.chat.id, "Сервер не доступен")
     bot.send_message(message.chat.id, f'Результат запроса: {response["result"]}')
-
-
 
 
 if __name__ == "__main__":
