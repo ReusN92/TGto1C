@@ -15,11 +15,10 @@ def json_example():
 
     number = request_data['number']
     message = request_data['message']
-    file = request_data['files']
-    buttons = request_data['buttons']
+    file = str(request_data['files'])
+    buttons = str(request_data['buttons'])
     id = request_data['id']
-    send_to = request_data['send_to']
-    logger.info(message)
+    send_to = str(request_data['send_to'])
     FuncDB.add_new_notifi(number=number, message=message, file=file, buttons=buttons, id=id, send_to=send_to, status='new')
 
     data = {"status":"Verified"}
