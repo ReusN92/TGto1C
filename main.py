@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 logger.add("debug.log", level="DEBUG", format="{time} {level} {message}")
 bot = telebot.TeleBot(TOKEN)
-bot.send
 @logger.catch
 @app.route('/json-example',methods=['POST'])
 def json_example():
