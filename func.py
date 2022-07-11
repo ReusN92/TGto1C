@@ -2,6 +2,7 @@ from config import URL_PING, URL_APPROVE, LOGIN
 from loguru import logger
 import requests
 import base64
+from models import *
 
 headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -21,4 +22,20 @@ def req(URL):
     else:
         data = {"result": f"Status Code [{response.status_code}]"}
         return data
+
+class FuncDB(Notifications):
+    """ Класс для обработки запросов к базе данных"""
+    def __init__(self):
+        pass
+    def add_new_notifi(number,message, buttons, id, file, send_to, status):
+        notifi = Notifications(number=number,
+                               message=message,
+                               buttons=buttons,
+                               id=id,
+                               file=file,
+                               send_to=send_to,
+                               status=status)
+        session.add(notifi)
+        session.commit()
+
 

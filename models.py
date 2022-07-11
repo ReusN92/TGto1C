@@ -26,14 +26,16 @@ class Notifications(base):
     __tablename__ = 'Notifications'
 
     id_bd = Column(Integer,primary_key=True)
-    number = Column(Integer, nullable=False)
+    number = Column(String, nullable=False)
     message = Column(String,nullable=False)
+    buttons =Column(String,nullable=False)
     id = Column(String,nullable=False)
     file = Column(String, nullable=True)
     send_to = Column(String,nullable=True)
+    status = Column(String,nullable=False)
 
 
 
     def __repr__(self):
-        return "'%s','%s','%s','%s','%s','%s'" % \
-               (self.id_bd,self.number,self.message, self.id,self.file,self.send_to)
+        return "'%s','%s','%s','%s','%s','%s','%s','%s'" % \
+               (self.id_bd,self.number,self.message,self.buttons,self.id,self.file,self.send_to,self.status)

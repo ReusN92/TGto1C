@@ -12,11 +12,13 @@ metadata = MetaData()
 
 Data = Table('Notifications', metadata,
                         Column('id_bd', Integer,primary_key=True),
-                        Column('number', Integer, nullable=False),
+                        Column('number', String, nullable=False),
                         Column('message', String, nullable=False),
+                        Column('buttons', String, nullable=False),
                         Column('id', String, nullable=False),
                         Column('file', String, nullable=True),
-                        Column('send_to', String, nullable=True)
+                        Column('send_to', String, nullable=True),
+                        Column('status', String, nullable=False)
              )
 
 
